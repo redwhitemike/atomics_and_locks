@@ -16,10 +16,7 @@ pub fn channel<T>() -> (Sender<T>, Receiver<T>) {
         message: UnsafeCell::new(MaybeUninit::uninit()),
         ready: AtomicBool::new(false),
     });
-    (
-        Sender { channel: a.clone() },
-        Receiver { channel: a.clone() },
-    )
+    (Sender { channel: a.clone() }, Receiver { channel: a })
 }
 
 pub struct Sender<T> {
